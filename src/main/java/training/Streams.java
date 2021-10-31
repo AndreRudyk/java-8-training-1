@@ -2,11 +2,14 @@ package training;
 
 import training.model.Movie;
 
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Set;
+import training.model.Movie;
+
+import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 import java.util.stream.Stream;
+
+import static java.util.Comparator.comparingInt;
 
 /**
  * Welcome to the steams training
@@ -19,92 +22,100 @@ import java.util.stream.Stream;
 public class Streams {
 
     public Stream<String> getAStreamOfNames(final String[] names) {
-        // TODO
-        return null;
+        return Arrays.stream(names);
     }
 
     public Stream<String> getAStreamOfNames(final List<String> names) {
-        // TODO
-        return null;
+        return names.stream();
     }
 
     public Stream<String> getAStreamOfTwoNames(final String firstName, final String secondName) {
-        // TODO
-        return null;
+        return Stream.of(firstName, secondName);
     }
 
     public List<String> getAListOfNames(final Stream<String> streamOfNames) {
-        // TODO
-        return null;
+        return streamOfNames.collect(Collectors.toList());
     }
 
     public Stream<Integer> getAStreamOfIntegersFromZeroToTen() {
-        // TODO
-        return null;
+        return IntStream.rangeClosed(0, 10).boxed();
     }
 
     public void printTheMessages(final List<String> messages) {
-        // TODO
+        messages.stream()
+                .forEach(System.out::println);
     }
 
     public List<String> convertTheNumbersToStrings(final List<Integer> numbers) {
-        // TODO
-        return null;
+        return numbers.stream()
+                .map(String::valueOf)
+                .collect(Collectors.toList());
     }
 
     public List<Integer> getOnlyTheEvenNumbers(final List<Integer> numbers) {
-        // TODO
-        return null;
+        return numbers.stream()
+                .filter(n -> n % 2 == 0)
+                .collect(Collectors.toList());
     }
 
     public Integer getTheFirstEvenNumberOrNullIfNotFound(final List<Integer> numbers) {
-        // TODO
-        return null;
+        return numbers.stream()
+                .filter(i -> i % 2 == 0)
+                .findFirst()
+                .orElse(null);
     }
 
     public int sumTheEvenNumbers(final List<Integer> numbers) {
-        // TODO
-        return 0;
+        return numbers.stream()
+                .filter(i -> i % 2 == 0)
+                .mapToInt(x -> x)
+                .sum();
     }
 
     public boolean checkIfAllTheNumbersAreEven(final List<Integer> numbers) {
-        // TODO
-        return false;
+        return numbers.stream()
+                .anyMatch(n -> n % 2 == 0);
     }
 
     public List<String> getTheNamesInUpperCase(final List<String> names) {
-        // TODO
-        return null;
+        return names.stream()
+                .map(n -> n.toUpperCase())
+                .collect(Collectors.toList());
     }
 
     public List<String> getTheDistinctNames(final List<String> names) {
-        // TODO
-        return null;
+        return names.stream()
+                .distinct()
+                .collect(Collectors.toList());
     }
 
     public List<String> getTheFirstThreeNames(final List<String> names) {
-        // TODO
-        return null;
+        return names.stream()
+                .limit(3)
+                .collect(Collectors.toList());
     }
 
     public List<String> sortTheNames(final List<String> disorderedNames) {
-        // TODO
-        return null;
+        return disorderedNames.stream()
+                .sorted()
+                .collect(Collectors.toList());
     }
 
     public long countTheNamesThatStartWithTheLetterD(final List<String> names) {
-        // TODO
-        return 0;
+        return names.stream()
+                .filter(n -> n.charAt(0) == 'D')
+                .count();
     }
 
     public Optional<Movie> getTheOldestMovie(final List<Movie> movies) {
-        // TODO
-        return null;
+        return movies.stream()
+                .min(comparingInt(Movie::getYear));
     }
 
     public Set<String> getAllTheCharactersFromTheMovies(final List<Movie> movies) {
-        // TODO
-        return null;
+        return movies.stream()
+                .flatMap(m -> m.getCharacters().stream())
+                .collect(Collectors.toSet());
     }
 
     public List<Movie> getTheMoviesFromTheSeventiesOrderedByYearInDescendingOrderAndNameInAscendingOrder(final List<Movie> movies) {
@@ -113,13 +124,13 @@ public class Streams {
     }
 
     public Map<Integer, String> getTheMovieNamesById(final List<Movie> movies) {
-        // TODO
-        return null;
+        return movies.stream()
+                .collect(Collectors.toMap(Movie::getId, Movie::getName));
     }
 
     public Map<String, List<Movie>> getTheMoviesOfEachDirector(final List<Movie> movies) {
-        // TODO
-        return null;
+        return movies.stream()
+                .collect(Collectors.groupingBy(Movie::getDirector));
     }
 
     public Map<String, Movie> getTheMovieOfEachCharacter(final List<Movie> movies) {
