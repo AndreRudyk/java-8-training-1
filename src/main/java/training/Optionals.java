@@ -5,6 +5,7 @@ import training.model.Message;
 import java.util.List;
 import java.util.Optional;
 import java.util.function.Supplier;
+import java.util.stream.Collectors;
 
 /**
  * Welcome to the optionals training
@@ -17,27 +18,22 @@ import java.util.function.Supplier;
 public class Optionals {
 
     public Optional<String> getAnEmptyOptional() {
-        // TODO
         return Optional.ofNullable(null);
     }
 
     public Optional<String> getAnOptionalOfANullableMessage(final String message) {
-        // TODO
         return Optional.ofNullable(message);
     }
 
     public boolean checkIfTheMessageProvidedHasValue(final Supplier<Optional<String>> messageSupplier) {
-        // TODO
         return messageSupplier.get().isPresent();
     }
 
     public String getTheMessageProvidedOrNullIfItHasNoValue(final Supplier<Optional<String>> messageSupplier) {
-        // TODO
         return messageSupplier.get().orElse(null);
     }
 
     public void printTheMessageProvidedOnlyIfItHasValue(final Supplier<Optional<String>> messageSupplier) {
-        // TODO
         messageSupplier.get().ifPresent(System.out::print);
     }
 
@@ -59,13 +55,13 @@ public class Optionals {
     }
 
     public Optional<String> getTheMessageContentInUpperCase(final Supplier<Optional<Message>> messageSupplier) {
-        // TODO
-        //return messageSupplier.get().map((s) -> s.getContent().toString().toUpperCase());
-        return Optional.of(messageSupplier.get().get().getContent().toString().toUpperCase());
+        return messageSupplier.get().map(s -> String.valueOf(s.getContent()).toUpperCase());
     }
 
     public List<String> getTheMessageContentsThatHaveValue(final Supplier<List<Message>> messagesSupplier) {
-        // TODO
-        return null;
+        return messagesSupplier.get().stream()
+                .filter(s -> s.getContent() != null)
+                .map(m -> String.valueOf(m.getContent()))
+                .collect(Collectors.toList());
     }
 }
