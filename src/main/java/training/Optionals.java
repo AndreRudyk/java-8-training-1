@@ -18,17 +18,17 @@ public class Optionals {
 
     public Optional<String> getAnEmptyOptional() {
         // TODO
-        return null;
+        return Optional.ofNullable(null);
     }
 
     public Optional<String> getAnOptionalOfANullableMessage(final String message) {
         // TODO
-        return null;
+        return Optional.ofNullable(message);
     }
 
     public boolean checkIfTheMessageProvidedHasValue(final Supplier<Optional<String>> messageSupplier) {
         // TODO
-        return false;
+        return messageSupplier.get().isPresent();
     }
 
     public String getTheMessageProvidedOrNullIfItHasNoValue(final Supplier<Optional<String>> messageSupplier) {

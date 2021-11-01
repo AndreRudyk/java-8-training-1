@@ -74,12 +74,12 @@ public class Streams {
 
     public boolean checkIfAllTheNumbersAreEven(final List<Integer> numbers) {
         return numbers.stream()
-                .anyMatch(n -> n % 2 == 0);
+                .allMatch(n -> n % 2 == 0);
     }
 
     public List<String> getTheNamesInUpperCase(final List<String> names) {
         return names.stream()
-                .map(n -> n.toUpperCase())
+                .map(String::toUpperCase)
                 .collect(Collectors.toList());
     }
 
