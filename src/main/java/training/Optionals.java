@@ -60,9 +60,9 @@ public class Optionals {
 
     public List<String> getTheMessageContentsThatHaveValue(final Supplier<List<Message>> messagesSupplier) {
         return messagesSupplier.get().stream()
-                .map(s -> s.getContent())
-                .filter(f -> f.isPresent())
-                .map(m -> String.valueOf(m))
+                .map(Message::getContent)
+                .filter(Optional::isPresent)
+                .map(Optional::get)
                 .collect(Collectors.toList());
     }
 }

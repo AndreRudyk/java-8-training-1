@@ -21,7 +21,6 @@ public class Lambdas {
     Supplier
      */
     public Supplier<Integer> getASupplierThatProvidesTheCurrentYear() {
-        // TODO
         return () -> LocalDate.now().getYear();
     }
 
@@ -34,7 +33,6 @@ public class Lambdas {
     Consumer
      */
     public Consumer<String> getAConsumerThatPrintsAString() {
-        // TODO
         return System.out::println;
     }
 
@@ -47,12 +45,10 @@ public class Lambdas {
     Function
      */
     public Function<String, Integer> getAFunctionThatCountsTheNumberOfCharactersOfAString() {
-        // TODO
         return String::length;
     }
 
     public void printNumberOfCharacters(final String myString) {
-        // TODO
         System.out.println(getAFunctionThatCountsTheNumberOfCharactersOfAString().apply(myString));
     }
 
@@ -61,12 +57,10 @@ public class Lambdas {
     Predicate
      */
     public Predicate<Integer> getAPredicateThatDetectsAnEvenNumber() {
-        // TODO
         return (x) -> x % 2 == 0;
     }
 
     public void printWhetherANumberIsEvenOrNot(final Integer number) {
-        // TODO
         System.out.println(getAPredicateThatDetectsAnEvenNumber().test(number));
     }
 
@@ -75,12 +69,10 @@ public class Lambdas {
     UnaryOperator
      */
     public UnaryOperator<String> getAUnaryOperatorThatTransformsAStringToUpperCase() {
-        // TODO
         return String::toUpperCase;
     }
 
     public void printAStringToUpperCase(final String myString) {
-        // TODO
         System.out.println(getAUnaryOperatorThatTransformsAStringToUpperCase().apply(myString));
     }
 
@@ -89,12 +81,10 @@ public class Lambdas {
     Runnable
      */
     public Runnable getARunnableThatPrintsHelloWorld() {
-        // TODO
         return () -> System.out.println("HELLO WORLD!");
     }
 
     public Thread getAThreadThatPrintsHelloWorld() {
-        // TODO
         return new Thread(this.getARunnableThatPrintsHelloWorld());
     }
 
@@ -103,12 +93,10 @@ public class Lambdas {
     Custom Functional Interface
      */
     public Calculator getACalculatorThatSumsTwoNumbers() {
-        // TODO
         return Integer::sum;
     }
 
     public Calculator getACalculatorThatMultipliesTwoNumbers() {
-        // TODO
         return (x, y) -> x * y;
     }
 
