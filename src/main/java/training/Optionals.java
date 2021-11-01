@@ -33,7 +33,7 @@ public class Optionals {
 
     public String getTheMessageProvidedOrNullIfItHasNoValue(final Supplier<Optional<String>> messageSupplier) {
         // TODO
-        return null;
+        return messageSupplier.get().orElse(null);
     }
 
     public void printTheMessageProvidedOnlyIfItHasValue(final Supplier<Optional<String>> messageSupplier) {
