@@ -38,6 +38,7 @@ public class Optionals {
 
     public void printTheMessageProvidedOnlyIfItHasValue(final Supplier<Optional<String>> messageSupplier) {
         // TODO
+        messageSupplier.get().ifPresent(System.out::print);
     }
 
     public String getTheMessageProvidedOrTheDefaultMessageIfItHasNoValue(final Supplier<Optional<String>> messageSupplier,
