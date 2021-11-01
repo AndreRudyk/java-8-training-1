@@ -43,28 +43,25 @@ public class Optionals {
 
     public String getTheMessageProvidedOrTheDefaultMessageIfItHasNoValue(final Supplier<Optional<String>> messageSupplier,
                                                                          final Supplier<String> defaultMessageSupplier) {
-        // TODO
-        return null;
+        return messageSupplier.get().orElseGet(defaultMessageSupplier);
     }
 
     public String getTheMessageProvidedOrThrowIllegalArgumentExceptionIfItHasNoValue(final Supplier<Optional<String>> messageSupplier) {
-        // TODO
-        return null;
+        return messageSupplier.get().orElseThrow(IllegalArgumentException::new);
     }
 
     public Optional<String> getTheMessageProvidedInUpperCase(final Supplier<Optional<String>> messageSupplier) {
-        // TODO
-        return null;
+        return messageSupplier.get().map(String::toUpperCase);
     }
 
     public Optional<Integer> getTheNumberProvidedOnlyIfItIsAnEvenNumber(final Supplier<Optional<Integer>> numberSupplier) {
-        // TODO
-        return null;
+        return numberSupplier.get().filter((n) -> n % 2 == 0);
     }
 
     public Optional<String> getTheMessageContentInUpperCase(final Supplier<Optional<Message>> messageSupplier) {
         // TODO
-        return null;
+        //return messageSupplier.get().map((s) -> s.getContent().toString().toUpperCase());
+        return Optional.of(messageSupplier.get().get().getContent().toString().toUpperCase());
     }
 
     public List<String> getTheMessageContentsThatHaveValue(final Supplier<List<Message>> messagesSupplier) {
