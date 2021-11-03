@@ -24,23 +24,23 @@ public class Time {
     LocalDate
      */
     public LocalDate getCurrentDate() {
-        // TODO
-        return null;
+        return LocalDate.now();
+    }
+
+    public static void main(String...args){
+        System.out.println(LocalDate.now().plusDays(3));
     }
 
     public LocalDate getCurrentDatePlus3Days() {
-        // TODO
-        return null;
+        return LocalDate.now().plusDays(3);
     }
 
     public int getCurrentYear() {
-        // TODO
-        return 0;
+        return LocalDate.now().getYear();
     }
 
     public LocalDate getTetrisReleaseDate() {
-        // TODO
-        return null;
+        return LocalDate.of(1984, 6, 6);
     }
 
     public LocalDate parseIsoDate(final String isoDate) {
